@@ -15,7 +15,9 @@ public class LongestIncreasingSubsequence {
         int[][] dp = new int[nums.length][nums.length + 1];
         for(int[] temp : dp) Arrays.fill(temp, -1);
 
-        return memoization(0, -1, nums, dp);
+        // return memoization(0, -1, nums, dp);
+
+        return tabulation(nums.length, nums);
     }
 
     private int recursive(int ind, int prev, int[] nums) {
@@ -39,5 +41,43 @@ public class LongestIncreasingSubsequence {
         if(prev == -1 || nums[ind] > nums[prev])  take = 1 + memoization(ind + 1, ind, nums, dp);
 
         return dp[ind][prev + 1] = Math.max(notTake, take);
+    }
+
+    private int tabulation(int n, int[] nums) {
+        int[][] dp = new int[n + 1][n + 1];
+
+        for(int ind = n - 1; ind >= 0; ind--) {
+            for(int prev = ind - 1; prev >= -1; prev--){
+                int notTake = dp[ind + 1][prev + 1];
+
+                int take = (int) -1e9;
+                if(prev == -1 || nums[ind] > nums[prev])  take = 1 + dp[ind + 1][ind + 1];
+
+                dp[ind][prev + 1] = Math.max(notTake, take);
+            }
+        }
+
+        return dp[0][-1+1];
+    }
+
+    private int usingArray(int[] nums) {
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp, 1);
+
+        for(int ind = 0; ind < nums.length; ind++) {
+            for(int prev = 0; prev < ind; prev++) {
+                if(nums[ind] > nums[prev]) {
+                    dp[ind] = Math.max(dp[ind], dp[prev] + 1);
+                }
+            }
+        }
+
+        int maxi = 0;
+
+        for(int ans : dp) {
+            if(maxi < ans) maxi = ans;
+        }
+
+        return maxi;
     }
 }
