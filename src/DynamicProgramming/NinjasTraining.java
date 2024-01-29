@@ -22,20 +22,22 @@ public class NinjasTraining {
             Arrays.fill(d, -1);
         }
 
-//        return (memoization(n - 1, 3, points, dp));
-        return tabulation(n, points, dp);
+        return (memoization(n - 1, 3, points, dp));
+//        return tabulation(n, points, dp);
     }
 
     private static int recursive(int day, int last, int[][] points) {
-        if(day == 0) {
-            int maxi = 0;
+//        if(day == 0) {
+//            int maxi = 0;
+//
+//            for(int i = 0; i < 3; i++) {
+//                if(i != last) maxi = Math.max(maxi, points[day][i]);
+//            }
+//
+//            return maxi;
+//        }
 
-            for(int i = 0; i < 3; i++) {
-                if(i != last) maxi = Math.max(maxi, points[day][i]);
-            }
-
-            return maxi;
-        }
+        if(day < 0) return 0;
 
         int maxi = 0;
 

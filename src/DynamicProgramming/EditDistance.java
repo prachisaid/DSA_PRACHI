@@ -2,7 +2,7 @@ package DynamicProgramming;
 
 import java.util.Arrays;
 
-public class EditDistance {
+public class  EditDistance {
     public static void main(String[] args) {
         String s = "horse";
         String t = "ros";

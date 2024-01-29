@@ -13,6 +13,8 @@ public class FrogWithKJumps {
         Arrays.fill(dp, -1);
 //        return recursive(n - 1, k, heights);
         return memoization(n - 1, k, heights, dp);
+
+//        return tabulation(k, heights, dp);
     }
 
     private static int recursive(int ind, int k, int[] heights) {
@@ -47,20 +49,21 @@ public class FrogWithKJumps {
         return ans;
     }
 
-    private static int tabulation(int ind, int k, int[] heights, int[] dp) {
-        if(ind == 0) return 0;
-        if(dp[ind] != -1) return dp[ind];
+        private static int tabulation(int k, int[] heights, int[] dp) {
+            dp[0] = 0;
 
-        int ans = Integer.MAX_VALUE;
+            for(int ind = 1; ind <= heights.length - 1; ind++) {
+                int ans = Integer.MAX_VALUE;
+                for (int i = 1; i <= k; i++) {
+                    if (ind - i >= 0) {
+                        int jump = Math.min(ans, dp[ind - i] + Math.abs(heights[ind] - heights[ind - i]));
+                        ans = Math.min(jump, ans);
+                    }
+                }
 
-        for (int i = 1; i <= k; i++) {
-            if(ind - i >= 0) {
-                int jump = Math.min(ans, memoization(ind - i, k, heights, dp) + Math.abs(heights[ind] - heights[ind - i]));
-                ans = Math.min(jump, ans);
+                dp[ind] = ans;
             }
-        }
 
-        dp[ind] = ans;
-        return ans;
-    }
+            return dp[heights.length - 1];
+        }
 }

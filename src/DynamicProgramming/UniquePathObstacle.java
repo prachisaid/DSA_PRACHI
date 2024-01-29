@@ -22,7 +22,8 @@ public class UniquePathObstacle {
         for(int[] dpRow : dp) {
             Arrays.fill(dpRow, -1);
         }
-        return memoization(n - 1, m - 1, mat, dp);
+//        return memoization(n - 1, m - 1, mat, dp);
+        return spaceOp(n, m, mat);
     }
 
     private static int recursive(int row, int col, ArrayList<ArrayList<Integer>> mat) {
@@ -67,5 +68,34 @@ public class UniquePathObstacle {
         }
 
         return dp[row][col];
+    }
+
+    private static int spaceOp(int n, int m, ArrayList<ArrayList<Integer>> mat) {
+        int[] prev = new int[n];
+
+        for(int row = 0; row < n; row++) {
+            int[] cur = new int[n];
+            for(int col = 0; col < m; col++) {
+                if(mat.get(row).get(col) == -1) {
+                    cur[col] = 0;
+                }
+                else if(row == 0 && col == 0) {
+                    cur[col] = 1;
+                }
+                else {
+                    int up = 0;
+                    int down = 0;
+
+                    up = prev[col];
+                    if(col > 0) down = cur[col - 1];
+
+                    cur[col] = up + down;
+                }
+            }
+
+            prev = cur;
+        }
+
+        return prev[n - 1];
     }
 }

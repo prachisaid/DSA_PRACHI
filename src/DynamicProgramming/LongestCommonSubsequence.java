@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class LongestCommonSubsequence {
     public static void main(String[] args) {
-        String text1 = "acd";
-        String text2 = "ced";
+        String text1 = "brute";
+        String text2 = "groot";
 
         LongestCommonSubsequence obj = new LongestCommonSubsequence();
         System.out.println(obj.longestCommonSubsequence(text1, text2));

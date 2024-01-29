@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class PrintLongestCommonSubsequence {
     public static void main(String[] args) {
-        String str1 = "acd";
-        String str2 = "ced";
+        String str1 = "bleed";
+        String str2 = "blue";
 
         System.out.println(lcs(str1, str2));
     }

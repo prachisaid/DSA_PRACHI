@@ -20,7 +20,7 @@ public class RodCutting {
         int take = Integer.MIN_VALUE;
         int indLength = ind + 1;
 
-        if(indLength <= N) take = price[ind] + recursive(ind - 1, N - indLength, price);
+        if(indLength <= N) take = price[ind] + recursive(ind, N - indLength, price);
 
         return Math.max(take, notTake);
     }
