@@ -9,15 +9,15 @@ public class BuyAndSellStockIII2 {
     }
 
     public int maxProfit(int[] prices) {
-//        return recursive(0, 0, prices);
+        return recursive(0, 0, prices);
 
-        int[][] dp = new int[prices.length + 1][5];
-        for(int[] temp : dp) Arrays.fill(temp, 0);
+//        int[][] dp = new int[prices.length + 1][5];
+//        for(int[] temp : dp) Arrays.fill(temp, 0);
 
 //        int ans = memoization(0, 1, prices, dp);
 //        return ans;
 
-        return tabulation(prices.length, prices, dp);
+//        return tabulation(prices.length, prices, dp);
     }
 
     private int recursive(int ind, int trans, int[] prices) {
@@ -46,7 +46,7 @@ public class BuyAndSellStockIII2 {
 
     private int tabulation(int n, int[] prices, int[][] dp) {
         for(int ind = n - 1; ind >= 0; ind--) {
-            for(int trans = 3; trans >= 0; trans--) {
+            for(int trans = 0; trans < 4; trans++) {
                 if(trans % 2 == 0) {
                     dp[ind][trans] = Math.max(-prices[ind] + dp[ind + 1][trans + 1], dp[ind + 1][trans]);
                 }

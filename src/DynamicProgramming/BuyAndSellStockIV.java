@@ -24,7 +24,9 @@ public class BuyAndSellStockIV {
             for(int[] temp2 : temp1) Arrays.fill(temp2, 0);
         }
 
-        return tabulation(k, prices.length, prices, dp);
+//        return tabulation(k, prices.length, prices, dp);
+
+        return recursive(0, 0, k, prices.length, prices);
     }
     private int recursion(int ind, int buy, int cap, int n, int[] prices) {
         if(cap == 0) return 0;
@@ -84,5 +86,22 @@ public class BuyAndSellStockIV {
             for(int[] temp2 : temp1) System.out.println(Arrays.toString(temp2));
         }
         return dp[0][1][k];
+    }
+
+    private int recursive(int ind, int trans, int k, int n, int[] prices) {
+        if(ind == n || trans == k) return 0;
+
+        int profit = 0;
+
+        if(trans % 2 == 0) {
+            profit = Math.max(-prices[ind] + recursive(ind + 1, trans + 1, k, n, prices),
+                    recursive(ind + 1, trans, k, n, prices));
+        }
+        else {
+            profit = Math.max(prices[ind] + recursive(ind + 1, trans + 1, k, n, prices),
+                    recursive(ind + 1, trans, k, n, prices));
+        }
+
+        return profit;
     }
 }

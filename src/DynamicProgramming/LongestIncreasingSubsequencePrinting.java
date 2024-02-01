@@ -41,6 +41,7 @@ public class LongestIncreasingSubsequencePrinting {
         }
 
         lst.add(nums[maxIndex]);
+        System.out.println(lst);
 
         return maxi;
     }

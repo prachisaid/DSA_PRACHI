@@ -8,7 +8,8 @@ public class PartitionArrayForMaxSum {
         PartitionArrayForMaxSum obj = new PartitionArrayForMaxSum();
         int[] arr = {1, 15, 7, 9, 2, 5, 10};
 
-        System.out.println(obj.maxSumAfterPartitioning(arr, 3));
+//        System.out.println(obj.maxSumAfterPartitioning(arr, 3));
+        System.out.println(Math.ceil(2.4));
     }
 
     public int maxSumAfterPartitioning(int[] arr, int k) {

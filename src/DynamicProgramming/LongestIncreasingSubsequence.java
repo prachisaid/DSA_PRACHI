@@ -57,6 +57,8 @@ public class LongestIncreasingSubsequence {
             }
         }
 
+        for(int[] temp : dp) System.out.println(Arrays.toString(temp));
+
         return dp[0][-1+1];
     }
 
