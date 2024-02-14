@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class PalindromePartitionII {
     public static void main(String[] args) {
-        String str = "bababcbadcede";
+        String str = "aaa";
         System.out.println(new PalindromePartitionII().minCut(str) - 1);
     }
 
@@ -21,11 +21,11 @@ public class PalindromePartitionII {
     private int recursive(int i, String str) {
         if(i == str.length()) return 0;
 
-        int minCost = Integer.MAX_VALUE;
+        int minCost = Integer.MIN_VALUE;
         for(int j = i; j < str.length(); j++) {
             if(isPalindrome(i, j, str)) {
                 int cost = 1 + recursive(j + 1, str);
-                minCost = Math.min(cost, minCost);
+                minCost = Math.max(cost, minCost);
             }
         }
 

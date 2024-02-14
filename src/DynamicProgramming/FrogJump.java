@@ -10,6 +10,7 @@ public class FrogJump {
 //        return recursive(n - 1, heights);
         int[] dp = new int[n];
         Arrays.fill(dp, -1);
+
         return tabulation(n - 1, heights, dp);
     }
 
