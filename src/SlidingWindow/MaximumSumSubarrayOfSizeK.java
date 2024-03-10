@@ -1,10 +1,18 @@
 package SlidingWindow;
 
 import java.util.ArrayList;
+import java.util.PriorityQueue;
 
 public class MaximumSumSubarrayOfSizeK {
     public static void main(String[] args) {
-        
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b - a);
+        pq.add(12);
+        pq.add(24);
+        pq.add(-10);
+        pq.add(50);
+        System.out.println(pq.remove(-10));
+        pq.add(3);
+        System.out.println(pq);
     }
 
     static long maximumSumSubarray(int k, ArrayList<Integer> Arr, int N){
@@ -27,7 +35,6 @@ public class MaximumSumSubarrayOfSizeK {
                 j++;
             }
         }
-
         return maxi;
     }
 }
