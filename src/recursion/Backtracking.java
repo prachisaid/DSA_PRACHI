@@ -22,7 +22,7 @@ public class Backtracking {
             return;
         }
 
-        if(maze[row][col] == false){
+        if(!maze[row][col]){
             return;
         }
 
@@ -62,7 +62,7 @@ public class Backtracking {
             return;
         }
 
-        if(maze[row][col] == false){
+        if(!maze[row][col]){
             return;
         }
 

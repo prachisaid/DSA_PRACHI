@@ -44,7 +44,7 @@ public class LetterCombination {
 
     static List<String> letterCombinations(String digits) {
         List<String> lst = new ArrayList<>();
-        if(digits.length() == 0){
+        if(digits.isEmpty()){
             return lst;
         }
         return letterCombination3("", digits);

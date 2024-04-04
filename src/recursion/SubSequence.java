@@ -11,7 +11,6 @@ public class SubSequence {
     }
 
     static ArrayList<String> subSeq(String p, String up){
-
         if(up.isEmpty()){
             ArrayList<String> list = new ArrayList<>();
             list.add(p);

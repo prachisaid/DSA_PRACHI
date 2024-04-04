@@ -5,10 +5,11 @@ import java.util.ArrayList;
 
 public class Maze {
     public static void main(String[] args) {
-        // System.out.println(maze(3, 3));
+        System.out.println(maze(3, 3));
+//        System.out.println(mazeRevision(3, 3));
         // mazePattern("", 3, 3);
 //         System.out.println(mazePatternReturn("", 3, 3));
-         System.out.println(mazePatternDiagonal("", 3, 3));
+//         System.out.println(mazePatternDiagonal("", 3, 3));
 
         boolean[][] maze = {
                 {true, true, true},
@@ -26,6 +27,22 @@ public class Maze {
         }
 
         return maze(row-1, col) + maze(row, col-1);
+    }
+
+    static int mazeRevision(int row, int col) {
+        if(row == 1 && col == 1) {
+            return 1;
+        }
+
+        int count = 0;
+        if(col > 1) {
+            count += mazeRevision(row, col - 1);
+        }
+        if(row > 1) {
+            count += mazeRevision(row - 1, col);
+        }
+
+        return count;
     }
 
     static void mazePattern(String p, int row, int col){
@@ -99,7 +116,7 @@ public class Maze {
             return;
         }
 
-        if(maze[row][col] == false){
+        if(!maze[row][col]){
             return;
         }
 

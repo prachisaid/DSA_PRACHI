@@ -1,13 +1,18 @@
 package recursion;
 
+import java.util.*;
+
 public class SkipCharacter {
     public static void main(String[] args) {
         System.out.println(skipChar("paaabbccc", ""));
         System.out.println(skipChar1("baccad"));
+
+        HashMap<Character, Integer> mp = new HashMap<>();
+        Integer[] arr = mp.values().toArray(new Integer[0]);
     }
 
     static String skipChar(String str, String newStr){
-        if(str.length() == 0){
+        if(str.isEmpty()){
             return newStr;
         }
 

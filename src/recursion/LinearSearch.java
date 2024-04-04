@@ -54,7 +54,7 @@ public class LinearSearch {
     }
 
     // Finding all occurrences and returning
-    static ArrayList findAllIndex1(int[] arr, int target, int n, ArrayList<Integer> list){
+    static ArrayList<Integer> findAllIndex1(int[] arr, int target, int n, ArrayList<Integer> list){
         if(n == arr.length){
             return list;
         }
@@ -67,7 +67,7 @@ public class LinearSearch {
     }
 
     // Return the list, don't take it in the argument
-    static ArrayList findAllIndex2(int[] arr, int target, int n){
+    static ArrayList<Integer> findAllIndex2(int[] arr, int target, int n){
         ArrayList<Integer> list = new ArrayList<>();
         if(n == arr.length){
             return list;
@@ -78,9 +78,9 @@ public class LinearSearch {
             list.add(n);
         }
 
-        ArrayList<Integer> ansFromBelow = findAllIndex2(arr, target, ++n);
+//        ArrayList<Integer> ansFromBelow = findAllIndex2(arr, target, ++n);
 
-        list.addAll(ansFromBelow);
+        list.addAll(findAllIndex2(arr, target, ++n));
 
         return list;
     }
