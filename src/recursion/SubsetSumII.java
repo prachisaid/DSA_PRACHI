@@ -30,6 +30,4 @@ public class SubsetSumII {
             ans.remove(ans.size()-1);
         }
     }
-
-
 }

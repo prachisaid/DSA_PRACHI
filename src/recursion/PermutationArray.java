@@ -1,7 +1,7 @@
 package recursion;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PermutationArray {
     public static void main(String[] args) {
