@@ -17,11 +17,11 @@ public class FirstNegative {
         int max = 0;
 
         for(int i = 0; i < k; i++){
-            if(arr[i] > arr[max]){
-                max = i;
+            if(arr[i] < 0){
+                dq.addLast(i);
             }
         }
-        dq.addLast(max);
+//        dq.addLast(max);
 
         if(dq.size() > 0){
             ans[count] = arr[dq.getFirst()];

@@ -25,7 +25,6 @@ public class LargestHistogram2 {
                 next[i] = size;
             }
             int w = next[i] - prev[i] - 1;
-            System.out.println(prev[i]);
 
             int newArea = l * w;
             area = Math.max(area, newArea);

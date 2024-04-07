@@ -8,38 +8,28 @@ public class NKnights {
     }
 
     static void knights(boolean[][] board, int row, int col, int knights){
-        if(row == board.length){
+        if(knights == 0){
             display(board);
             System.out.println();
             return;
         }
 
-        for (int colm = 0; colm < board.length; colm++) {
-            // place the queen if it is safe
-
-            if(isSafe(board, row, colm)){
-                board[row][colm] = true;
-                knights(board, row + 1, colm, knights + 1);
-                board[row][colm] = false;
-            }
+        if(row == board.length-1 && col == board.length){
+            return;
         }
 
-//        if(row == board.length-1 && col == board.length){
-//            return;
-//        }
-//
-//        if(col == board.length){
-//            knights(board, row + 1, 0, knights);
-//            return;
-//        }
-//
-//        if(isSafe(board, row, col)){
-//            board[row][col] = true;
-//            knights(board, row, col + 1, knights - 1);
-//            board[row][col] = false;
-//        }
-//
-//        knights(board, row, col + 1, knights);
+        if(col == board.length){
+            knights(board, row + 1, 0, knights);
+            return;
+        }
+
+        if(isSafe(board, row, col)){
+            board[row][col] = true;
+            knights(board, row, col + 1, knights - 1);
+            board[row][col] = false;
+        }
+
+        knights(board, row, col + 1, knights);
     }
 
     private static boolean isSafe(boolean[][] board, int row, int col) {

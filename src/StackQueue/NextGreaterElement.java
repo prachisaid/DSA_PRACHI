@@ -7,10 +7,7 @@ import java.util.Stack;
 public class NextGreaterElement {
     public static void main(String[] args) {
         int[] nums = {1, 2, 1};
-//        System.out.println(Arrays.toString(nextGreaterElements(nums)));
-        if(2>2){
-            System.out.println("hello");
-        }
+        System.out.println(Arrays.toString(nextGreaterElements(nums)));
     }
 
     public static int[] nextGreaterElements(int[] nums) {
