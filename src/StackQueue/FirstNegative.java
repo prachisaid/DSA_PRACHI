@@ -6,8 +6,11 @@ import java.util.Deque;
 
 public class FirstNegative {
     public static void main(String[] args) {
-        int arr[] = {-8, 2, 3, -6, 10};
+        int arr[] = {-8, -1, 3, -6, 10};
         System.out.println(Arrays.toString(firstNegative(arr, 5, 2)));
+        char ch = '6';
+        int num = ch - '0';
+        System.out.println(num);
     }
 
     public static int[] firstNegative(int[] arr, int n, int k) {
