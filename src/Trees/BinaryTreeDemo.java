@@ -110,13 +110,35 @@ public class BinaryTreeDemo {
                     q.offer(node.right);
                 }
 
-                
+
             }
 
             ans.add(lst);
         }
 
         System.out.println(ans);
+    }
+
+    private void inorderIterative(Node root) {
+        Stack<Node> stack = new Stack<>();
+        List<Integer> lst = new ArrayList<>();
+        Node node = root;
+
+        while(true) {
+            if(node != null) {
+                stack.push(node);
+                node = node.left;
+            }
+
+            else{
+                if(stack.isEmpty()) break;
+                node = stack.pop();
+                lst.add(node.value);
+                node = node.right;
+            }
+        }
+
+        System.out.println(lst);
     }
 
     public static void main(String[] args) {
