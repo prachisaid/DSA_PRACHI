@@ -109,13 +109,9 @@ public class BinaryTreeDemo {
                 if(node.right != null) {
                     q.offer(node.right);
                 }
-
-
             }
-
             ans.add(lst);
         }
-
         System.out.println(ans);
     }
 

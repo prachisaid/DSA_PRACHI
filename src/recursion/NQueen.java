@@ -5,7 +5,7 @@ import java.util.List;
 
 public class NQueen {
     public static void main(String[] args) {
-        int n = 4;
+        int n = 15;
         boolean[][] board = new boolean[n][n];
         System.out.println(queens(board, 0));
     }
