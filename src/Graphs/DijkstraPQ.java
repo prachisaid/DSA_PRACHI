@@ -17,7 +17,7 @@ public class DijkstraPQ {
     }
     public static void main(String[] args) {
         DijkstraPQ dj = new DijkstraPQ();
-        System.out.println(Arrays.toString(dj.dijkstra(6, dj.adjList(8, 5), 0)));
+        System.out.println(Arrays.toString(dj.dijkstra(3, dj.adjList(3, 2), 0)));
     }
 
     public int[] dijkstra(int V, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S) {
@@ -70,6 +70,7 @@ public class DijkstraPQ {
             adj.get(v).get(u).add(w);
         }
 
+        System.out.println(adj);
         return adj;
     }
 }

@@ -2,6 +2,7 @@ package questions;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
+import java.util.Scanner;
 
 public class AStar {
     public static class Node {
@@ -18,20 +19,31 @@ public class AStar {
     }
 
     public static void main(String[] args) {
-        int[][] initial = {
-                {2, 8, 3},
-                {1, 6, 4},
-                {7, 0, 5}
-        };
+        int[][] initial = new int[3][3];
+        int[][] goal = new int[3][3];
 
-        int[][] goal = {
-                {1, 2, 3},
-                {8, 0, 4},
-                {7, 6, 5}
-        };
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the INITIAL STATE");
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                initial[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println("Enter the GOAL STATE");
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                goal[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println("Enter the x and y coordinate of empty tile (0 based index");
+        int x = sc.nextInt();
+        int y = sc.nextInt();
 
         AStar obj = new AStar();
-        obj.aStar(initial, goal, 2, 1);
+        System.out.println("INITIAL PATH OF THE STATE");
+        obj.aStar(initial, goal, x, y);
     }
 
     public void aStar(int[][] initial, int[][] goal, int x, int y) {
@@ -40,7 +52,7 @@ public class AStar {
         Node root = newNode(initial, x, y, x, y, 0, null);
         root.cost = calculateCost(initial, goal);
         pq.add(root);
-        System.out.println(pq);
+        boolean first = true;
 
         int[] delRow = {1, 0, -1, 0};
         int[] delCol = {0, -1, 0, 1};
@@ -49,20 +61,49 @@ public class AStar {
             Node node = pq.peek();
             pq.poll();
 
+            if(first) {
+                printMatrix(node.matrix);
+                printValues(node.level, node.cost);
+                first = false;
+            }
+
+            else {
+                System.out.println("Selected Optimal State : ");
+                printMatrix(node.matrix);
+                printValues(node.level, node.cost);
+            }
+
             if(node.cost == 0) {
+                System.out.println();
+                System.out.println("FINAL OPTIMAL PATH TO THE GOAL STATE");
                 printPath(node);
                 return;
             }
 
+            int possible = 0;
             for(int i = 0; i < 4; i++) {
                 if(isValid(node.x + delRow[i], node.y + delCol[i])) {
+                    possible += 1;
+                }
+            }
+
+            System.out.println("Total moves possible " + possible);
+
+            for(int i = 0; i < 4; i++) {
+                if(isValid(node.x + delRow[i], node.y + delCol[i])) {
+                    possible += 1;
                     Node child = newNode(node.matrix, node.x, node.y, node.x + delRow[i],
                             node.y + delCol[i], node.level + 1, node);
 
                     child.cost = calculateCost(child.matrix, goal);
                     pq.add(child);
+
+                    printMatrix(child.matrix);
+                    printValues(child.level, child.cost);
+                    System.out.println();
                 }
             }
+
         }
     }
 

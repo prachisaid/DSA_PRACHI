@@ -49,6 +49,7 @@ public class BinaryTreeDemo {
 
     public void inorder() {
         inorderTraversal(root);
+        inorderIterative(root);
     }
 
     private void inorderTraversal(Node root) {
@@ -76,7 +77,8 @@ public class BinaryTreeDemo {
     }
 
     public void postorder() {
-        postorderTraversal(root);
+//        postorderTraversal(root);
+        postOrderIterativeTwoStack(root);
     }
 
     private void postorderTraversal(Node root) {
@@ -137,16 +139,38 @@ public class BinaryTreeDemo {
         System.out.println(lst);
     }
 
+    private void postOrderIterativeTwoStack(Node root) {
+        Stack<Node> stack1 = new Stack<>();
+        Stack<Node> stack2 = new Stack<>();
+
+        List<Integer> ans = new ArrayList<>();
+
+        stack1.push(root);
+
+        while(!stack1.isEmpty()) {
+            Node node = stack1.pop();
+
+            stack2.push(node);
+
+            if(node.left != null) {
+                stack1.push(node.left);
+            }
+            if(node.right != null) {
+                stack1.push(node.right);
+            }
+        }
+
+        while(!stack2.isEmpty())  {
+            ans.add(stack2.pop().value);
+        }
+
+        System.out.println(ans);
+    }
+
     public static void main(String[] args) {
         BinaryTreeDemo bt = new BinaryTreeDemo();
 
         bt.insert();
-        bt.inorder();
-        System.out.println();
-        bt.preorder();
-        System.out.println();
         bt.postorder();
-        System.out.println();
-        bt.bfs();
     }
 }

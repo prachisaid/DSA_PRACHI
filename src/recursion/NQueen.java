@@ -5,7 +5,7 @@ import java.util.List;
 
 public class NQueen {
     public static void main(String[] args) {
-        int n = 15;
+        int n = 3;
         boolean[][] board = new boolean[n][n];
         System.out.println(queens(board, 0));
     }
@@ -24,6 +24,7 @@ public class NQueen {
 
             if(isSafe(board, row, col)){
                 board[row][col] = true;
+//                display(board);
                 count = count + queens(board, row+1);
                 board[row][col] = false;
             }
