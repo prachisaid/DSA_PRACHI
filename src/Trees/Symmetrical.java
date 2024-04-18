@@ -19,6 +19,5 @@ public class Symmetrical extends BinarySearchTree{
         }
 
         return check(left.left, right.right) && check(left.right, right.left);
-
     }
 }

@@ -2,8 +2,9 @@ package Trees;
 
 import java.util.*;
 
-public class RightView extends BinarySearchTree{
-    class QueueData{
+public class RightView extends BinaryTreeDemo {
+
+    static class QueueData {
         Node node;
         int vertical;
         int level;
@@ -23,8 +24,10 @@ public class RightView extends BinarySearchTree{
         while(!queue.isEmpty()){
             QueueData q = queue.poll();
 
-            map.put(q.level, new TreeMap<>());
-            map.get(q.level).put(q.vertical, q.node);
+            if(!map.containsKey(q.level)) {
+                map.put(q.level, new TreeMap<>());
+                map.get(q.level).put(q.vertical, q.node);
+            }
 
             if(q.node.right != null){
                 queue.add(new QueueData(q.node.right, q.vertical + 1, q.level + 1));
@@ -43,5 +46,11 @@ public class RightView extends BinarySearchTree{
         }
 
         return lst;
+    }
+
+    public static void main(String[] args) {
+        RightView obj = new RightView();
+        obj.insert();
+        System.out.println(obj.rightSideView(obj.root));
     }
 }

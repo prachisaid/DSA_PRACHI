@@ -5,7 +5,7 @@ import java.util.Queue;
 
 public class MaximumWidth extends BinarySearchTree{
 
-    class Pair{
+    static class Pair{
         Node node;
         int num;
 

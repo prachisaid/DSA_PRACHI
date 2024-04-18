@@ -4,7 +4,7 @@ import java.util.*;
 
 public class BinaryTreeDemo {
 
-    class Node {
+    public static class Node {
         Node left;
         Node right;
         int value;
@@ -14,7 +14,7 @@ public class BinaryTreeDemo {
         }
     }
 
-    private Node root;
+    public Node root;
     Scanner sc = new Scanner(System.in);
 
     public void insert() {

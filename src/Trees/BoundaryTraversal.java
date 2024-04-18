@@ -4,7 +4,7 @@ import java.util.*;
 public class BoundaryTraversal extends BinarySearchTree{
     public ArrayList<Integer> traverseBoundary(Node root){
         ArrayList<Integer> res = new ArrayList<>();
-        if(isLeaf(root) == false){
+        if(!isLeaf(root)){
             res.add(root.value);
         }
         addLeftBoundary(root, res);
@@ -17,7 +17,7 @@ public class BoundaryTraversal extends BinarySearchTree{
         Node cur = node.left;
 
         while(cur != null){
-            if(isLeaf(cur) == false){
+            if(!isLeaf(cur)){
                 res.add(cur.value);
             }
 
@@ -35,7 +35,7 @@ public class BoundaryTraversal extends BinarySearchTree{
         ArrayList<Integer> lst = new ArrayList<>();
 
         while(cur != null){
-            if(isLeaf(cur) == false){
+            if(!isLeaf(cur)){
                 lst.add(cur.value);
             }
 
@@ -47,9 +47,12 @@ public class BoundaryTraversal extends BinarySearchTree{
             }
         }
 
-        for(int i = lst.size() - 1; i >= 0; --i){
-            res.add(lst.get(i));
-        }
+//        for(int i = lst.size() - 1; i >= 0; --i){
+//            res.add(lst.get(i));
+//        }
+
+        Collections.reverse(lst);
+        res.addAll(lst);
     }
 
     void addLeaves(Node node, ArrayList<Integer> res){
