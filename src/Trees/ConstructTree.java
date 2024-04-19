@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ConstructTree {
-    class Node{
+    static class Node{
         Node left;
         Node right;
         int val;

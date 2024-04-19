@@ -1,5 +1,8 @@
 package Trees;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class FlattenTree  extends BinarySearchTree{
     Node prev = null;
     public void flatten(Node root) {
