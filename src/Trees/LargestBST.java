@@ -1,5 +1,7 @@
 package Trees;
 
+import java.util.*;
+
 class NodeValue extends BinarySearchTree{
     public int maxValue, minValue, maxSize;
 
