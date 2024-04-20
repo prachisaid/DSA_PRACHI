@@ -2,18 +2,23 @@ package Trees;
 public class InorderSuccessor extends BinarySearchTree{
     Node inorderSuccessor(Node root, Node p){
         Node successor = null;
-        String str = "AB";
-        String subStr = str.substring(0, 3);
-
 
         while(root != null){
-            if(p.value < root.value){
-                successor = root;
-                root = root.left;
-            }
-            else{
-                root = root.right;
-            }
+//            if(p.value < root.value){
+//                successor = root;
+//                root = root.left;
+//            }
+//            else{
+//                root = root.right;
+//            }
+
+			if(root.value < p.value) {
+				successor = root;
+				root = root.right;
+			}
+			else {
+				root = root.left;
+			}
         }
 
         return successor;
@@ -29,6 +34,6 @@ public class InorderSuccessor extends BinarySearchTree{
         bst.insert(8);
         bst.insert(1);
 
-        System.out.println(bst.inorderSuccessor(bst.root, bst.root.left.left).value);
+        System.out.println(bst.inorderSuccessor(bst.root, bst.root.left.right).value);
     }
 }

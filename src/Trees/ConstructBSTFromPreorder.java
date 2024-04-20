@@ -1,6 +1,6 @@
 package Trees;
 
-public class ConstructBST extends BinarySearchTree{
+public class ConstructBSTFromPreorder extends BinarySearchTree{
     public Node bstFromPreorder(int[] preorder) {
         Node root = null;
         for(int i = 0; i < preorder.length; i++){
@@ -27,7 +27,7 @@ public class ConstructBST extends BinarySearchTree{
 
     public static void main(String[] args) {
         int[] preorder = {8, 5, 1, 7, 10, 12};
-        ConstructBST bst = new ConstructBST();
+        ConstructBSTFromPreorder bst = new ConstructBSTFromPreorder();
 
         Node root = bst.bstFromPreorder(preorder);
         System.out.println(root.value);
