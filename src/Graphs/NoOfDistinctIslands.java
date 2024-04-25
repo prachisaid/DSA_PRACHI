@@ -41,6 +41,8 @@ public class NoOfDistinctIslands {
     }
     private void dfs(int row, int col, int[][] visited, int[][] grid, ArrayList<String> vec, int baseRow, int baseCol) {
         visited[row][col] = 1;
+//		String ans = Integer.toString(row - baseRow) + " " + Integer.toString(col - baseCol);
+//		vec.add(ans);
         vec.add(toString(row - baseRow, col - baseCol));
 
         int n = grid.length;
