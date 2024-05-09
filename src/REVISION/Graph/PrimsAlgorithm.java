@@ -113,6 +113,7 @@ public class PrimsAlgorithm {
 			adj.get(v).add(new Pair(u, w));
 		}
 
+		System.out.println(adj);
 		return adj;
 	}
 }
