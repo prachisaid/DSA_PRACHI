@@ -12,6 +12,8 @@ public class FloodFill {
                 {2, 2, 2}
         };
 
+		String comp =  "Str";
+
         int[][] ans = floodFill(image, 2, 0, 3);
 
         for(int[] i : ans){
@@ -24,7 +26,7 @@ public class FloodFill {
     }
 
     public static int[][] floodFill(int[][] image, int sr, int sc, int color) {
-        int initial = image[sr][sc];
+        int initial = image[sr][sc];						
         int[][] visited = new int[image.length][image[0].length];
         bfs1(sr, sc, image, visited, color, initial);
         return image;
