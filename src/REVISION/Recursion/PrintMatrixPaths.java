@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PrintMatrixPaths {
 	public static void main(String[] args) {
-		System.out.println(paths(2, 2, ""));
+//		System.out.println(paths(2, 2, ""));
 		List<String> ans = new ArrayList<>();
 		paths(2, 2, "", ans);
 		System.out.println(ans);
@@ -44,6 +44,9 @@ public class PrintMatrixPaths {
 			count += paths(row, col - 1, p + 'R', ans);
 		}
 
+		if(row > 0 && col > 0) {
+			count += paths(row - 1, col - 1, p + 'L', ans);
+		}
 		return count;
 	}
 }
