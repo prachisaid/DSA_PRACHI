@@ -5,7 +5,7 @@ import java.util.List;
 public class LetterCombination {
     public static void main(String[] args) {
         letterCombination("", "12");
-//        System.out.println(letterCombinations( ""));
+        System.out.println(letterCombinations( ""));
     }
 
     static void letterCombination(String p, String up){

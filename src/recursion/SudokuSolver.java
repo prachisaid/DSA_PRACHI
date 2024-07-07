@@ -17,6 +17,7 @@ public class SudokuSolver {
         System.out.println();
         if(solve(board)){
             display(board);
+			System.out.println("hello");
         }
 
     }
