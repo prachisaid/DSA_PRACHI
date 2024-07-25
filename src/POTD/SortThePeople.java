@@ -39,6 +39,6 @@ public class SortThePeople {
 	}
 
 	public static void main(String[] args) {
-
+		
 	}
 }
