@@ -1,1 +1,1 @@
-DSA Problems (LeetC.
+DSA Problems (LeetCo.
