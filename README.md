@@ -1,1 +1,1 @@
-DSA Problems (LeetCode, Gfg, Codefor).
+DSA Problems (LeetCode, Gfg, Codeforc).
