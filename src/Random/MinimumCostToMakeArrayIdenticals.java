@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MinimumCostToMakeArrayIdenticals {
 	public static void main(String[] args) {
-
+		MinimumCostToMakeArrayIdenticals obj = new MinimumCostToMakeArrayIdenticals();
 	}
 
 	public long minCost(int[] arr, int[] brr, long k) {
