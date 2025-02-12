@@ -2,15 +2,26 @@ package REVISION.Recursion;
 
 public class SkipACharacter {
 	public static void main(String[] args) {
-		System.out.println(skip("baccad", "", 0));
+		System.out.println(func("", "baacaa", 0));
+		System.out.println(func1("baacaa", 0));
 	}
 
-	public static String skip(String up, String p, int ind) {
-		if(ind == up.length()) return p;
+	private static String func(String str, String org, int ind) {
+		if(ind == org.length()) return str;
 
-		char ch = up.charAt(ind);
+		if(org.charAt(ind) != 'a'){
+			str += org.charAt(ind);
+		}
 
-		if(ch == 'a') return skip(up, p, ind + 1);
-		return skip(up, p + ch, ind + 1);
- 	}
+		return func(str, org, ind + 1);
+	}
+
+	private static String func1(String str, int ind) {
+		String ans = "";
+		if(ind == str.length()) return ans;
+
+		if(str.charAt(ind) != 'a') ans += str.charAt(ind);
+
+		return ans += func1(str, ind + 1);
+	}
 }

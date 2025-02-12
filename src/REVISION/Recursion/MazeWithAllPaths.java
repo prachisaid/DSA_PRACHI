@@ -1,41 +1,43 @@
 package REVISION.Recursion;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MazeWithAllPaths {
 	public static void main(String[] args) {
-		boolean[][] maze = {
+		boolean[][] board = {
 			{false, false, false},
 			{false, false, false},
 			{false, false, false}
 		};
-		paths(maze, 0, 0, "");
+
+		System.out.println(func(0, 0, board, ""));
 	}
 
-	public static void paths(boolean[][] maze, int row, int col, String p) {
-		if(row == maze.length - 1 && col == maze[0].length - 1) {
-			System.out.println(p);
-			return;
+	private static List<String> func(int row, int col, boolean[][] matrix, String path) {
+		List<String> ans = new ArrayList<>();
+		if(row == matrix.length - 1 && col == matrix[0].length - 1) {
+			ans.add(path);
+			return ans;
 		}
 
-		if(maze[row][col]) return;
+		if(matrix[row][col]) return ans;
+		matrix[row][col] = true;
 
-		maze[row][col] = true;
+		// Down
+		if(row < matrix.length - 1) ans.addAll(func(row + 1, col, matrix, path + "D"));
 
-		if(row < maze.length - 1) {
-			paths(maze, row + 1, col, p + "D");
-		}
+		// Right
+		if(col < matrix[0].length - 1) ans.addAll(func(row, col + 1, matrix, path + "R"));
 
-		if(col < maze[0].length - 1) {
-			paths(maze, row, col + 1, p + "R");
-		}
+		// Up
+		if(row > 0) ans.addAll(func(row - 1, col, matrix, path + "U"));
 
-		if(row > 0) {
-			paths(maze, row - 1, col, p + "U");
-		}
+		// Left
+		if(col > 0) ans.addAll(func(row, col - 1, matrix, path + "L"));
 
-		if(col > 0) {
-			paths(maze, row, col - 1, p + "L");
-		}
+		matrix[row][col] = false;
 
-		maze[row][col] = false;
+		return ans;
 	}
 }

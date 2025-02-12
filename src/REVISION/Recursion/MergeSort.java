@@ -4,45 +4,54 @@ import java.util.Arrays;
 
 public class MergeSort {
 	public static void main(String[] args) {
-		int[] arr = {2, 8, 5, 3};
-		System.out.println(Arrays.toString(mergeSort(arr)));
+		int[] arr = {4, 2, 8, 1, 3, 10, 7};
+		mergeSort(arr, 0, arr.length - 1);
+		System.out.println(Arrays.toString(arr));
 	}
 
-	public static int[] mergeSort(int[] arr) {
-		if(arr.length == 1) {
-			return arr;
-		}
+	private static void mergeSort(int[] arr, int s, int e) {
+		if(s >= e) return;
 
-		int mid = arr.length / 2;
-		int[] left = mergeSort(Arrays.copyOfRange(arr, 0, mid));
-		int[] right = mergeSort(Arrays.copyOfRange(arr, mid, arr.length));
+		int mid = s + (e - s) / 2;
+		mergeSort(arr, s, mid);
+		mergeSort(arr, mid + 1, e);
 
-		return merge(left, right);
+		merge(arr, s, mid, e);
 	}
 
-	public static int[] merge(int[] a1, int[] a2) {
-		int[] arr = new int[a1.length + a2.length];
-		int i = 0;
-		int j = 0;
-		int k = 0;
+	private static void merge(int[] arr, int start, int mid, int end) {
+		int[] ans = new int[end - start + 1];
 
-		while(i < a1.length && j < a2.length) {
-			if(a1[i] < a2[j]) {
-				arr[k++] = a1[i++];
+		int i = start;
+		int j = mid + 1;
+		int ind = 0;
+
+		while(i <= mid && j <= end) {
+			if(arr[i] < arr[j]) {
+				ans[ind++] = arr[i++];
 			}
-			else {
-				arr[k++] = a2[j++];
+			else if(arr[j] < arr[i]) {
+				ans[ind++] = arr[j++];
 			}
 		}
 
-		while(i < a1.length) {
-			arr[k++] = a1[i++];
+		while(i <= mid) {
+			ans[ind++] = arr[i++];
 		}
 
-		while(j < a2.length) {
-			arr[k++] = a2[j++];
+		while(j <= end) {
+			ans[ind++] = arr[j++];
 		}
 
-		return arr;
+		ind = 0;
+		for(int s = start; s <= end; s++) {
+			arr[s] = ans[ind++];
+		}
+	}
+
+	private static void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
 	}
 }
