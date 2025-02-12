@@ -4,44 +4,48 @@ import java.util.Arrays;
 
 public class QuickSort {
 	public static void main(String[] args) {
-		int[] arr = {1, 3, 2, 4, 5};
+		int[] arr = {4, 2, 8, 1, 3, 10, 7, 9, 5, 11};
 		quickSort(arr, 0, arr.length - 1);
 		System.out.println(Arrays.toString(arr));
 	}
 
-	public static void quickSort(int[] arr, int low, int high) {
-		if(low < high) {
-			int pivot = partition(arr, low, high);
-			quickSort(arr, low, pivot - 1);
-			quickSort(arr, pivot + 1, high);
-		}
+	private static void quickSort(int[] arr, int s, int e) {
+		if(s >= e) return;
+		int pivot = partition(arr, s, e);
+		quickSort(arr, s, pivot - 1);
+		quickSort(arr, pivot + 1, e);
 	}
 
-	public static int partition(int[] arr, int low, int high) {
-		int pivot = arr[low];
-		int i = low;
-		int j = high;
+	private static int partition(int[] arr, int s, int e) {
+		int pivot = arr[s];
+		int cnt = 0;
 
-		while(i < j) {
-			while(arr[i] <= pivot && i < high) {
+		for(int i = s + 1; i <= e; i++) {
+			if(arr[i] < pivot) cnt++;
+		}
+
+		int pivotIndex = s + cnt;
+		swap(arr, pivotIndex, s);
+
+		int i = s;
+		int j = e;
+		while(i < pivotIndex && j > pivotIndex) {
+			while(arr[i] < pivot) i++;
+			while(arr[j] > pivot) j--;
+
+			if(i < pivotIndex && j > pivotIndex) {
+				swap(arr, i, j);
 				i++;
-			}
-
-			while(arr[j] > pivot && j > low) {
 				j--;
-			}
-
-			if(i < j) {
-				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
 			}
 		}
 
-		int temp = arr[j];
-		arr[j] = arr[low];
-		arr[low] = temp;
+		return pivotIndex;
+	}
 
-		return j;
+	private static void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
 	}
 }
