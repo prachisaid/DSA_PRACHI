@@ -2,10 +2,13 @@ package REVISION.Recursion;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Subsequences {
 	public static void main(String[] args) {
 		int[] arr = {3, 1, 2};
+//		Stack stack = new Stack();
+//		stack.
 		func(0, arr, new ArrayList<>());
 	}
 
